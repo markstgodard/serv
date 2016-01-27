@@ -8,6 +8,14 @@ import (
 	"os"
 )
 
+const (
+	BANNER = ` _____  _____  _____  __ __
+ /  ___>/   __\/  _  \/  |  \
+ |___  ||   __||  _  <\  |  /
+ <_____/\_____/\__|\_/ \___/
+	`
+)
+
 func main() {
 	flag.Parse()
 
@@ -25,7 +33,8 @@ func main() {
 		os.Exit(1)
 	}
 
-	log.Printf("Serving from dir: %s\n", dir)
+	fmt.Printf("%s\n", BANNER)
+	fmt.Printf("Serving from dir: %s\n", dir)
 
 	log.Fatal(http.ListenAndServe(":8080", http.FileServer(http.Dir(dir))))
 }
